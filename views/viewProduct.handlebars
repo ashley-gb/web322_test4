@@ -1,1 +1,23 @@
-{{#each product}}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seneca Bakery</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div style="border-style: solid" style="border-radius: 3px" style="border-color: darkmagenta">
+        <h2>Product Listing</h2><br>
+        <!-- If any records exist, list them here-->
+        {{#each record}} 
+        <a href="/editProduct/{{title}}">Edit</a>&nbsp;&nbsp;
+    </div>
+    <!-- Otherwise, indicate there are no products in DB, provide link to add a product-->
+    {{else}}
+        There are currently no products stored
+        <a href="/addProduct">Edit</a>&nbsp;&nbsp;
+     {{/each}}
+    </div>
+</body>
+</html>

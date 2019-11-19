@@ -6,7 +6,8 @@ const Schema = mongoose.Schema;
 const productSchema = new Schema({
   "title": {
     "type": String,
-    "required": true
+    "required": true,
+    "unique": true
   },
   "price": {
     "type": Number,

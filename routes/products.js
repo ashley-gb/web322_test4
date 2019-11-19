@@ -20,6 +20,14 @@ router.post("/addProduct",(req,res)=>{
         taxable: true
     });
 
+    //Check if product title is unique, if not request user to redo application
+    Product.findOne({title: this.title})
+    .then(()=>{
+        if(Product.title == this.title){
+            res.render("/error"); 
+        }
+    })
+
     //Save the instance
     const product = new Product(newProduct);
     product.save()
@@ -30,9 +38,26 @@ router.post("/addProduct",(req,res)=>{
     })
     //Informs user if error occurs
     .catch((err) =>{
-        console.log("Sorry, an error occurred: ");
+        console.log("Sorry, an error occurred: " + err);
     })
 })
+
+process.exit();
+
+//Checks for records in the inventory database
+router.get("/viewProducts",(req,res)=>{
+
+    Product.find()
+    .then((product)=>{
+        res.render("/viewProducts", {
+            record:products
+        });
+    })
+    //If error, inform user
+    .catch((err)=>{
+        console.log("Sorry, an error occurred: " + err);
+    })
+});
 
 //Update a record
 
