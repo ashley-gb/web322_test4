@@ -4,32 +4,25 @@ const Schema = mongoose.Schema;
 
 //Create schema
 const productSchema = new Schema({
-  title:  
-  {
-      type:String,
-      required:true
+  "title": {
+    "type": String,
+    "required": true
   },
-  price:  
-  {
-      type:String,
-      required:true
+  "price": {
+    "type": Number,
+    "required": true
   },
-  quantity:  
-  {
-      type:String,
-      required:true
-  },
-  description:
-  {
-      type:String
-  },
-  taxable:
-  {
-      type:Boolean,
-      required:true
+  "quantity": {
+      "type": Number,
+      "required": true
+    },
+  "description": String,
+  "taxable": {
+    "type": Boolean,
+    "required": true
   }
 });
 
-const productModel =mongoose.model("Task",taskSchema);
+const productModel = mongoose.model("Product", productSchema);
 
 module.exports=productModel;

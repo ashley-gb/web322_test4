@@ -1,11 +1,11 @@
-const express = require('express')
+//---Main Routing---
+const express = require('express');
 const router = express.Router();
 
-//Routing for home page
-router.get("/",(req,res)=>
-{
+//Home page
+router.get("/",(req,res)=>{
     res.render("home");
 });
 
-
+//Outputs render back to main
 module.exports=router;

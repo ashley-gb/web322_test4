@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seneca Bakery</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div style="border-style: solid" style="border-radius: 3px" style="border-color: darkmagenta">
+        <h2>Edit Product</h2><br>
+        <main>
+            <!-- Form to update an existing product-->
+            <form method="POST" action="/editProduct">
+                <label>Product Title:</label>
+                <input type="text" name="title"><br>
+                <label>Product Price:</label>
+                <input type="number" name="price"><br>
+                <label>Quantity on Hand:</label>
+                <input type="number" name="quantity"><br>
+                <label>Product Description</label>
+                <textarea name="message"></textarea><br>
+                <label>Taxable Item:</label>
+                <input type="radio" name="taxable" value="Yes">Yes
+                <input type="radio" name="taxable" value="No">No
+                <input type="submit" value="Edit Product">
+            </form>
+        </main>
+    </div>
+</body>
+</html>

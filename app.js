@@ -1,5 +1,4 @@
-/*
-WEB 322 Test 4: At Home Assignment
+/*WEB 322 Test 4: At Home Assignment
 Professor: Mr. Kadeem Best
 Name: Ashley Gernitz-Bennett
 Student #: 133046185
@@ -10,31 +9,37 @@ const express= require("express");
 const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const HTTP_Port = 8080;
 
 //Include any environment variables in code
 require("dotenv").config({path:'./config/key.env'});
 
+//import your router objects
+const mainRoutes = require("./routes/main");
+const productRoutes = require("./routes/products");
+
+//Creates the app object, tells system to use bodyParser
 const app = express();
 app.use(bodyParser.urlencoded({extended:false}));
 
-//Informs program to use handlebars
+//Outsources routing to separate route scripts
+app.use("/",mainRoutes);
+app.use("/products",productRoutes);
+
+//Informs program to use handlebars in handling HTML
 app.engine("handlebars",exphbs());
 app.set("view engine","handlebars");
 
-//Transfers routing requests to our routing files
-app.use("/main",mainRoutes);
-app.use("/products",productRoutes);
+//Handles MongoDB database
+//Debug error: Failure to connect to server
+const MONGO_DB_URL ='mongodb+srv://ashley_gb:<ginger1/>@web322-5nq6h.mongodb.net/test?retryWrites=true&w=majority';
 
-//Handle MongoDB database
-
-//Listen to verify server connection
-const PORT = process.env.PORT || 3000;
+mongoose.connect("mongodb://localhost/WEB322");
 
 
-app.listen(PORT,()=>{
-    console.log(`Your Web Server has been connected`);
-    
-});
-
+//Listen for server connection
+app.listen(HTTP_Port,()=>{
+    console.log('Connection successful!');
+})
 
 
