@@ -14,7 +14,7 @@ const HTTP_Port = 8080;
 //Include any environment variables in code
 require("dotenv").config({path:'./config/key.env'});
 
-//import your router objects
+//Include our routing scripts
 const mainRoutes = require("./routes/main");
 const productRoutes = require("./routes/products");
 
@@ -34,13 +34,20 @@ app.set("view engine","handlebars");
 //Debug error: Failure to connect to server
 const MONGO_DB_URL ='mongodb+srv://ashley_gb:<ginger1/>@web322-5nq6h.mongodb.net/test?retryWrites=true&w=majority';
 
-mongoose.connect("mongodb://localhost/WEB322");
+mongoose.connect("mongodb://localhost/WEB322")
+.then(()=>{
+    console.log("Connection to DB server successful!");
+})
+.catch((err)=>{
+    console.log("Connection failed: Error -" + err);
+})
 
 
 //Listen for server connection
 app.listen(HTTP_Port,()=>{
     console.log('Connection successful!');
 })
+
 
 
 
